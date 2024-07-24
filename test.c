@@ -15,12 +15,31 @@ void game(){
     char board[ROW][COL];
     initBoard(board,ROW,COL);
     displayBoard(board,ROW,COL);
-    playerMove(board,ROW,COL);
-    displayBoard(board,ROW,COL);
-    
+    char ret;
+    while(1){
+        playerMove(board,ROW,COL);
+        displayBoard(board,ROW,COL);
+        
+        enemyMove(board,ROW,COL);
+        displayBoard(board,ROW,COL);
+        // ret = isWin(board,ROW,COL);
+        // if(ret != 'C'){
+        //     break;
+        // }
+    }
+        if(ret == '*'){
+            printf("You Win\n");
+        }
+        if(ret == 'Q'){
+            printf("This Game Is A Draw\n");
+        }
+       if(ret == '#'){
+            printf("You Lose\n");
+        }
 }
 int main(){
     int input = 0;
+    srand((unsigned int)time(NULL));
     do{
         gameStart();
         printf("whether to start the game\n");
