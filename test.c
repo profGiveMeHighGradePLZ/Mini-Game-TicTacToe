@@ -15,45 +15,49 @@ void game(){
     char board[ROW][COL];
     initBoard(board,ROW,COL);
     displayBoard(board,ROW,COL);
-    char ret;
+    char ret = 0;
     while(1){
         playerMove(board,ROW,COL);
         displayBoard(board,ROW,COL);
-        
+        ret = isWin(board,ROW,COL);
+        if(ret != 'C'){
+            break;
+        }
         enemyMove(board,ROW,COL);
         displayBoard(board,ROW,COL);
-        // ret = isWin(board,ROW,COL);
-        // if(ret != 'C'){
-        //     break;
-        // }
+        ret = isWin(board,ROW,COL);
+        if(ret != 'C'){
+            break;
+        }
     }
         if(ret == '*'){
-            printf("You Win\n");
+            printf("===You Win===\n");
         }
         if(ret == 'Q'){
-            printf("This Game Is A Draw\n");
+            printf("==This Game Is A Draw==\n");
         }
        if(ret == '#'){
-            printf("You Lose\n");
+            printf("===You Lose===\n");
         }
+        
 }
 int main(){
     int input = 0;
     srand((unsigned int)time(NULL));
     do{
         gameStart();
-        printf("whether to start the game\n");
-        printf("please enter(1/0):");
+        printf("==whether to start the game==\n");
+        printf("=====please enter (1/0):=====\n");
         scanf("%d",&input);
         switch(input){
             case 1:
                 game();
                 break;
-            case 2:
-                printf("GAME OVER\n");
+            case 0:
+                printf("==GAME OVER==\n");
                 break;
             default:
-            printf("error,please input again\n");
+            printf("==error,please input again==\n");
                 break;
         }
     }while(input);

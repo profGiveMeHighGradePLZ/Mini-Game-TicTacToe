@@ -64,7 +64,7 @@ void displayBoard(char board[ROW][COL],int row, int col){
 
 void playerMove(char board[ROW][COL],int row,int col){
     //player input a coordinate
-    printf("Player Round,please enter a coordinate:");
+    printf(">>Player Round,please enter a coordinate:");
     while(1){
         int a = 0;
         int b = 0;
@@ -77,11 +77,11 @@ void playerMove(char board[ROW][COL],int row,int col){
                 break;
             }
             else{
-                printf("error,please enter another coordinate\n");
+                printf(">>error,please enter another coordinate\n");
             }
         }
         else{
-        printf("error,please enter again\n");
+        printf(">>error,please enter again\n");
         }
     }
     
@@ -89,7 +89,7 @@ void playerMove(char board[ROW][COL],int row,int col){
 
 void enemyMove(char board[ROW][COL],int row,int col){
     //random generate a coordinate
-    printf("Enemy round\n");
+    printf(">>Enemy round\n");
     int x = 0;
     int y = 0;
     while(1){
@@ -124,28 +124,26 @@ int full(char board[ROW][COL],int row,int col){
         if is a draw: return 'Q'
         else : return 'C'
         */
-        int i = 0;
+    int i = 0;
     for(i=0;i<row;i++){
-        if(board[i][0] ==board[i][1] && board[i][0] == board[i][2] && board[i][0] != ' '){
-            return board[i][0];
+        if((board[i][0] ==board[i][1]) && (board[i][1] == board[i][2]) && (board[i][1] != ' ')){
+            return board[i][1];
         }
     }
     int j = 0;
     for(j=0;j<col;j++){
-        if(board[0][j] ==board[1][j] && board[0][j] == board[2][j] && board[0][j] != ' '){
-            return board[0][j];
+        if((board[0][j] ==board[1][j]) && (board[1][j] == board[2][j]) && (board[1][j] != ' ')){
+            return board[1][j];
         }
     }
-    if(board[0][0]== board[1][1] && board[0][0] == board[2][2] && board[0][0] != ' '){
-        return board[0][0];
+    if((board[0][0]== board[1][1]) && (board[1][1] == board[2][2]) && (board[1][1] != ' ')){
+        return board[1][1];
     }
-    if(board[0][2]== board[1][1] && board[0][2] == board[2][0] && board[0][0] != ' '){
-        return board[0][2];
+    if((board[0][2]== board[1][1]) && (board[1][1] == board[2][0]) && (board[1][1] != ' ')){
+        return board[1][1];
     }       
-        if(full(board,row,col)){
-            return 'Q';
-        }
-        else{
-            return 'C';
-        }
+    if(full(board,row,col)){
+        return 'Q';
+    }
+        return 'C';
  }
